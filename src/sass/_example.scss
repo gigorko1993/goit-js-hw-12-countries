@@ -1,3 +1,46 @@
 body {
   background-color: lightblue;
 }
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+li {
+  list-style: none;
+}
+li.country__name {
+  list-style: disc;
+}
+.search-country {
+  margin: 20px;
+  min-width: 450px;
+  font-size: 20px;
+}
+.js-country__container {
+  min-width: 400px;
+}
+.country {
+  margin: 0px;
+  padding: 0px;
+  &__description {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-template-rows: 1.5fr repeat(4, 1fr);
+  }
+  &__header {
+    grid-area: 1 / 1 / 2 / 3;
+    margin-left: 100px;
+  }
+  &__flag {
+    grid-area: 2 / 2 / 6 / 3;
+  }
+  &__label {
+    font-weight: bold;
+  }
+  &__item {
+    font-weight: normal;
+  }
+}
