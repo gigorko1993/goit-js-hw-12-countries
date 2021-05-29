@@ -15,20 +15,9 @@ refs.input.addEventListener('input', debounce(onSearch, 500));
 function onSearch(ev) {
   ev.preventDefault();
 
-  const inputedText = ev.target.value;
+  const inputedText = ev.target.value.trim();
 
-  API.fetchCountry(inputedText)
-    .then(renderCountryCard)
-    .catch(err => {
-      error({
-        text: `${inputedText} not found. Please checked if enter value is correct. And try one more time ${err}`,
-      });
-    })
-    .finally(
-      setTimeout(() => {
-        ev.target.value = '';
-      }, 500),
-    );
+  API.fetchCountry(inputedText).then(renderCountryCard);
 }
 
 function renderCountryCard(country) {
@@ -42,7 +31,7 @@ function renderCountryCard(country) {
   } else if (country.length > 10) {
     error({
       text: 'Too many matches found. Please enter a more specific query!',
-      delay: 3000,
+      delay: 3500,
     });
   }
   return;
